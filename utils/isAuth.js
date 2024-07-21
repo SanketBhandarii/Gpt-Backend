@@ -9,7 +9,6 @@ export const isAuth = async (req, res, next) => {
     }
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     const user = await User.findById(decoded._id);
-    const userDetails = {};
     res.json({ username: user.username, email: user.email });
     next();
   } catch (e) {}

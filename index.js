@@ -16,7 +16,7 @@ const MONGO_URL = process.env.MONGO_URL;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://chatt-gpt.netlify.app",
     credentials: true,
   })
 );

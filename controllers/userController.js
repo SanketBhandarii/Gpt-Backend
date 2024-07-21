@@ -55,9 +55,14 @@ export const login = async (req, res) => {
     console.log(e);
   }
 };
+
 export const logout = (req, res) => {
-  const { token } = req.cookies;
   res
-    .cookie("token", "", { expires: new Date(Date.now()) })
+    .cookie("token", "", {
+      expires: new Date(0),
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    })
     .json("Logout Successfully");
 };

@@ -41,7 +41,7 @@ export const login = async (req, res) => {
       return;
     }
     const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY, {
-      expiresIn: "7hr",
+      expiresIn: "7d",
     });
     res
       .status(200)
@@ -49,6 +49,7 @@ export const login = async (req, res) => {
         httpOnly: true,
         sameSite: "None",
         secure: true,
+        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       })
       .json({ msg: "Login Successful" });
   } catch (e) {
